@@ -1,0 +1,16 @@
+# 
+# exclude
+#
+template
+.snapshot  
+wp-content
+smarty
+themes
+plugin
+fb_personality_quiz
+www/data/services.nick.com/nick/member
+flux-gs.php
+yml.php
+/www/data/appdynamics/
+/www/data/evolven/agent
+autom4te.cache

@@ -1,0 +1,17 @@
+#
+#  backdoors.txt
+#
+back_connect_pl
+www.full-comandos.com
+ipays
+eval(base64_decode(
+r57shell
+infectslab
+Dr.Backd00r
+<?=shell_exec($_
+SubhashDasyam
+"/bin/sh -i"
+"PHP Mini MySQL Admin"
+"eval ($ ___ ($ __))"
+"eval (base64_decode"
+portscan

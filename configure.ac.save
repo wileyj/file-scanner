@@ -1,0 +1,94 @@
+# initial information about the project
+AC_INIT([filescanner],[0.1],[jesse.wiley@viacom.com])
+
+# check if the source folder is available
+AC_CONFIG_SRCDIR([src/main.cpp])
+
+# check for C++ preprocessor and compiler
+AC_PROG_CXXCPP
+AC_PROG_CXX
+AC_PROG_RANLIB
+
+# automake initialization (mandatory) including a check for automake API version >= 1.9
+AM_INIT_AUTOMAKE([1.9])
+
+# use the C++ compiler for the following checks
+AC_LANG([C++])
+
+# Checks for header files.
+AC_HEADER_STDC
+AC_CHECK_HEADERS([string])
+AC_CHECK_HEADERS([iostream])
+AC_CHECK_HEADERS([magic.h])
+AC_CHECK_HEADERS([openssl/sha.h])
+
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_TYPE_SIZE_T
+
+# distribute additional compiler and linker flags among Makefiles
+# --> set and change these variables instead of CXXFLAGS or LDFLAGS (for user only)
+AC_SUBST([AM_CXXFLAGS])
+AC_SUBST([AM_LDFLAGS])
+
+# files to generate via autotools (prepare .am or .in source files)
+AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([src/Makefile])
+
+# finally this generates the Makefiles etc. for the build
+AC_OUTPUT
+
+
+##########################################################################
+# debug compilation support
+##########################################################################
+
+AC_MSG_CHECKING([whether to build with debug information])
+AC_ARG_ENABLE([debug],
+    [AS_HELP_STRING([--enable-debug],
+        [enable debug data generation (def=no)])],
+    [debugit="$enableval"],
+    [debugit=no])
+AC_MSG_RESULT([$debugit])
+
+if test x"$debugit" = x"yes"; then
+    AC_DEFINE([DEBUG],[],[Debug Mode])
+    AM_CXXFLAGS="$AM_CXXFLAGS -g -Wall -Werror -Wno-uninitialized -O0"
+else
+    AC_DEFINE([NDEBUG],[],[No-debug Mode])
+    AM_CXXFLAGS="$AM_CXXFLAGS -O3"
+fi
+
+##########################################################################
+AC_SUBST([AM_CXXFLAGS])
+
+tore current user given compiler flags to avoid default setup via AC_PROG_CXX
+OLD_CXXFLAGS=$CXXFLAGS
+# check for C++ preprocessor and compiler and the library compiler
+# (might change the compiler flags)
+AC_PROG_CXXCPP
+AC_PROG_CXX
+# reset compiler flags to initial flags
+CXXFLAGS=$OLD_CXXFLAGS
+
+##########################################################################
+
+# adding the lib to the files to link
+LIBS="lstdc++ -lssl -lmagic"
+
+# introduce the optional configure parameter for a non-standard install prefix of XXX
+AC_ARG_WITH([XXX],
+    [AS_HELP_STRING([--with-XXX=prefix],
+        [try this for a non-standard install prefix of the XXX library])],
+    [XXXPATHSET=1],
+    [XXXPATHSET=0])
+	
+# if optional parameter used, extend path flags for compliler and linker
+if test $XXXPATHSET = 1 ; then
+    # extend the compiler and linker flags according to the path set
+    AM_CXXFLAGS="$AM_CXXFLAGS $LIBS"
+    AM_LDFLAGS="$AM_LDFLAGS -L/usr/lib64 -L/lib64 -lz"
+fi
+
+##########################################################################
+
