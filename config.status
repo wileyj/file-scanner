@@ -425,7 +425,7 @@ $config_headers
 Configuration commands:
 $config_commands
 
-Report bugs to <jesse.wiley@viacom.com>."
+Report bugs to <user@local.com>."
 
 ac_cs_config=""
 ac_cs_version="\
@@ -697,7 +697,7 @@ S["program_transform_name"]="s,x,x,"
 S["prefix"]="/usr/local"
 S["exec_prefix"]="${prefix}"
 S["PACKAGE_URL"]=""
-S["PACKAGE_BUGREPORT"]="jesse.wiley@viacom.com"
+S["PACKAGE_BUGREPORT"]="user@local.com"
 S["PACKAGE_STRING"]="filescanner 0.1"
 S["PACKAGE_VERSION"]="0.1"
 S["PACKAGE_TARNAME"]="filescanner"
@@ -749,7 +749,7 @@ D["PACKAGE_NAME"]=" \"filescanner\""
 D["PACKAGE_TARNAME"]=" \"filescanner\""
 D["PACKAGE_VERSION"]=" \"0.1\""
 D["PACKAGE_STRING"]=" \"filescanner 0.1\""
-D["PACKAGE_BUGREPORT"]=" \"jesse.wiley@viacom.com\""
+D["PACKAGE_BUGREPORT"]=" \"user@local.com\""
 D["PACKAGE_URL"]=" \"\""
 D["PACKAGE"]=" \"filescanner\""
 D["VERSION"]=" \"0.1\""

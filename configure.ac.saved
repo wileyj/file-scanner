@@ -1,5 +1,5 @@
 # initial information about the project
-AC_INIT([filescanner],[0.1],[jesse.wiley@viacom.com])
+AC_INIT([filescanner],[0.1],[user@local.com])
 
 # check if the source folder is available
 AC_CONFIG_SRCDIR([src/main.cpp])
